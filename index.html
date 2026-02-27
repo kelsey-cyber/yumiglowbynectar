@@ -566,6 +566,47 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: #4A6B7A; border-radius: 2px; transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      /* Nav */
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column; gap: 0;
+        position: fixed; top: 58px; left: 0; right: 0;
+        background: rgba(255,255,255,0.98);
+        border-bottom: 1px solid rgba(58,172,224,0.12);
+        padding: 8px 24px 20px; z-index: 99;
+      }
+      .nav-links.mobile-open li { border-bottom: 1px solid rgba(58,172,224,0.08); }
+      .nav-links.mobile-open a { display: block; padding: 14px 0; font-size: 0.8rem; }
+
+      /* Hide device on mobile */
+      .hero-visual { display: none; }
+
+      /* Layout */
+      .hero, .tech-grid, .steps-wrapper { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .modes-grid { grid-template-columns: 1fr; }
+      .specs-grid { grid-template-columns: 1fr 1fr; }
+      nav, section, .hero, footer { padding-left: 24px; padding-right: 24px; }
+      .features-strip { gap: 16px; padding: 20px 24px; flex-wrap: wrap; }
+    }
+
     @media (max-width: 1024px) {
       .hero, .tech-grid, .steps-wrapper { grid-template-columns: 1fr; }
       .hero-visual { margin-top: 60px; }
@@ -582,13 +623,16 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><em>Yumi</em><span>Glow</span> <span style="font-size:0.7rem;letter-spacing:0.08em;color:var(--stone)">by nectarelite</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#technology">Technology</a></li>
     <li><a href="#how-to-use">How to Use</a></li>
     <li><a href="#modes">Modes</a></li>
     <li><a href="#specs">Specs</a></li>
   </ul>
-  <button class="nav-cta">Shop Now</button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
 </nav>
 
 <!-- HERO -->
@@ -598,7 +642,6 @@
     <h1 class="hero-title">Your Skin's<br><em>Ritual,</em><br>Elevated.</h1>
     <p class="hero-desc">YumiGlow combines professional-grade EMS microcurrent, multi-wavelength LED therapy, and intelligent temperature control — delivering a spa-caliber treatment, daily, at home.</p>
     <div class="hero-actions">
-      <button class="btn-primary">Shop YumiGlow</button>
       <button class="btn-ghost">Learn More</button>
     </div>
   </div>
@@ -942,7 +985,7 @@
   <p class="section-eyebrow">Begin Your Ritual</p>
   <h2 class="section-title">Your Best Skin<br><em>Starts Today.</em></h2>
   <p>Unlock the future of your skincare routine. Professional technology, effortlessly beautiful design — made for everyday luxury.</p>
-  <button class="btn-white">Shop YumiGlow Now</button>
+  <button class="btn-white" style="display:none">Shop YumiGlow Now</button>
 </div>
 
 <!-- FOOTER -->
@@ -1041,6 +1084,23 @@
   const defaultArrow = document.getElementById('arrows-cheeks');
   if (defaultArrow) defaultArrow.style.display = 'block';
   modeIndicator.innerHTML = hintText();
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('mobile-open');
+    });
+    // Close menu when a link is tapped
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('mobile-open');
+      });
+    });
+  }
 </script>
 </body>
 </html>
