@@ -370,6 +370,7 @@
     }
 
     @media (max-width: 680px) {
+      section { padding: 60px 24px; }
       .invest-split {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
@@ -379,6 +380,10 @@
       }
       .invest-divider-line { flex: 1; height: 1px; width: auto; min-height: unset; }
       .invest-divider-vs { writing-mode: horizontal-tb; }
+      .box-inner { margin-top: 36px; }
+      .box-row { padding: 14px 0; }
+      .box-name { font-size: 0.78rem; }
+      .box-desc { font-size: 0.62rem; }
     }
 
     /* ── TECHNOLOGY ── */
@@ -610,8 +615,15 @@
         grid-template-columns: 1fr;
         gap: 36px;
       }
-      .box-img-card { order: -1; padding: 36px 24px; }
-      .box-img-card svg { max-width: 200px !important; }
+      .box-img-card { 
+        order: -1; 
+        padding: 24px 16px;
+        width: 100%;
+      }
+      .box-img-card svg { 
+        max-width: 100% !important;
+        height: auto;
+      }
     }
 
     /* ── FAQ ── */
