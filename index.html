@@ -279,7 +279,7 @@
     /* Split layout */
     .invest-split {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 0;
       align-items: stretch;
       max-width: 860px;
@@ -572,7 +572,7 @@
     .in-box { background: var(--snow); }
     .box-inner {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: start; margin-top: 60px;
+      gap: 60px; align-items: center; margin-top: 60px;
     }
     .box-items { display: flex; flex-direction: column; }
     .box-row {
@@ -1097,14 +1097,7 @@
         </div>
       </div>
 
-      <!-- Divider -->
-      <div class="invest-divider">
-        <div class="invest-divider-line"></div>
-        <div class="invest-divider-vs">vs</div>
-        <div class="invest-divider-line"></div>
-      </div>
-
-      <!-- Right: YumiGlow -->
+<!-- Right: YumiGlow -->
       <div class="invest-right">
         <div class="invest-right-label">What you get with YumiGlow</div>
         <div class="invest-yumi">
@@ -1179,27 +1172,79 @@
       <div class="box-row"><span class="box-n">05</span><span class="box-name">Ritual Guide</span><span class="box-desc">Full protocol & instructions</span></div>
     </div>
     <div class="box-img-card reveal d2">
-      <svg viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;position:relative;z-index:1">
-        <rect x="28" y="72" width="244" height="208" rx="4" fill="#F4F8FA" stroke="#A8D8E8" stroke-width="1.5"/>
-        <rect x="28" y="72" width="244" height="32" rx="4" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="1"/>
-        <text x="150" y="91" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12" fill="#3AACE0" letter-spacing="1">YumiGlow</text>
-        <text x="150" y="108" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="6" fill="#6E8A96" letter-spacing="3">BY NECTARELITE</text>
-        <!-- Device in box -->
-        <rect x="114" y="118" width="72" height="148" rx="36" fill="white" stroke="#A8D8E8" stroke-width="1.5"/>
-        <ellipse cx="150" cy="136" rx="28" ry="28" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="1.2"/>
-        <ellipse cx="150" cy="136" rx="20" ry="20" fill="white"/>
-        <ellipse cx="150" cy="136" rx="15" ry="15" fill="url(#boxLed)"/>
-        <!-- Pouch -->
-        <rect x="42" y="228" width="58" height="40" rx="6" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="1"/>
-        <text x="71" y="252" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="#6E8A96" letter-spacing="2">POUCH</text>
-        <!-- Cable -->
-        <path d="M208 240 Q228 244 232 258 Q230 265 218 262" stroke="#A8D8E8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <svg viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;position:relative;z-index:1">
         <defs>
-          <radialGradient id="boxLed" cx="50%" cy="50%" r="50%">
+          <linearGradient id="boxBodyG" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#EBF6FB"/>
+            <stop offset="45%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#D6EEF5"/>
+          </linearGradient>
+          <radialGradient id="boxHeadG" cx="50%" cy="38%" r="60%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#C8E8F5"/>
+          </radialGradient>
+          <radialGradient id="boxLedG" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stop-color="#3AACE0" stop-opacity="0.5"/>
             <stop offset="100%" stop-color="#3AACE0" stop-opacity="0"/>
           </radialGradient>
+          <radialGradient id="boxLedCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7ED4F0" stop-opacity="0.8"/>
+            <stop offset="60%" stop-color="#3AACE0" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#1E8DBF" stop-opacity="0.2"/>
+          </radialGradient>
         </defs>
+
+        <!-- Box outer -->
+        <rect x="12" y="12" width="296" height="336" rx="6" fill="#F7FAFB" stroke="#A8D8E8" stroke-width="1.2"/>
+        <!-- Box lid -->
+        <rect x="12" y="12" width="296" height="36" rx="6" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="1.2"/>
+        <line x1="12" y1="48" x2="308" y2="48" stroke="#A8D8E8" stroke-width="0.8"/>
+        <!-- Lid text -->
+        <text x="160" y="29" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12" fill="#7DA7AE" letter-spacing="0.5">YumiGlow</text>
+        <text x="160" y="42" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="5" fill="#94B8C0" letter-spacing="3">BY NECTAR ELITE</text>
+
+        <!-- ── DEVICE (hero SVG scaled down, centered) ── -->
+        <g transform="translate(102, 28) scale(0.52)">
+          <!-- Base -->
+          <path d="M48 432 Q58 462 110 467 Q162 462 172 432 L168 422 Q145 444 110 446 Q75 444 52 422Z" fill="#C8E4EF" stroke="#A8D8E8" stroke-width="1"/>
+          <path d="M52 422 Q75 444 110 446 Q145 444 168 422 L170 412 Q150 432 110 435 Q70 432 50 412Z" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="0.5"/>
+          <!-- Cradle -->
+          <path d="M66 382 Q84 418 110 421 Q136 418 154 382 L152 372 Q136 408 110 411 Q84 408 68 372Z" fill="#C8E4EF" stroke="#A8D8E8" stroke-width="1"/>
+          <!-- Device body -->
+          <rect x="76" y="98" width="68" height="308" rx="34" fill="url(#boxBodyG)" stroke="#A8D8E8" stroke-width="1.5"/>
+          <!-- Body sheen -->
+          <path d="M80 118 Q84 108 96 106 L96 388 Q84 385 80 372Z" fill="white" opacity="0.25"/>
+          <!-- Buttons -->
+          <rect x="94" y="242" width="32" height="13" rx="6.5" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="0.8"/>
+          <rect x="94" y="262" width="32" height="13" rx="6.5" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="0.8"/>
+          <!-- Dots -->
+          <circle cx="110" cy="224" r="2.5" fill="#3AACE0" opacity="0.7"/>
+          <circle cx="110" cy="214" r="2.5" fill="#3AACE0" opacity="0.45"/>
+          <circle cx="110" cy="204" r="2.5" fill="#3AACE0" opacity="0.25"/>
+          <!-- Head -->
+          <ellipse cx="110" cy="100" rx="34" ry="34" fill="url(#boxHeadG)" stroke="#A8D8E8" stroke-width="1.5"/>
+          <ellipse cx="110" cy="100" rx="25" ry="25" fill="white" stroke="#D6EEF5" stroke-width="1"/>
+          <ellipse cx="110" cy="100" rx="21" ry="21" fill="url(#boxLedG)" opacity="0.9"/>
+          <ellipse cx="110" cy="100" rx="15" ry="15" fill="url(#boxLedCore)"/>
+          <!-- Outer rings -->
+          <ellipse cx="110" cy="100" rx="40" ry="40" stroke="rgba(58,172,224,0.18)" stroke-width="1" fill="none"/>
+          <ellipse cx="110" cy="100" rx="48" ry="48" stroke="rgba(58,172,224,0.08)" stroke-width="1" fill="none"/>
+        </g>
+
+        <!-- ── POUCH — bottom left ── -->
+        <rect x="24" y="254" width="72" height="50" rx="5" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="1"/>
+        <rect x="30" y="260" width="60" height="38" rx="3" fill="white" stroke="#C8E4F0" stroke-width="0.6" stroke-dasharray="2.5 2"/>
+        <text x="60" y="282" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="5.5" fill="#94B8C0" letter-spacing="2.5">POUCH</text>
+
+        <!-- ── RITUAL GUIDE — bottom right ── -->
+        <rect x="220" y="248" width="72" height="58" rx="3" fill="white" stroke="#A8D8E8" stroke-width="1"/>
+        <rect x="220" y="248" width="72" height="14" rx="3" fill="#EBF4F8" stroke="#A8D8E8" stroke-width="0.8"/>
+        <text x="256" y="258" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="7" fill="#7DA7AE">Ritual Guide</text>
+        <line x1="228" y1="272" x2="284" y2="272" stroke="#C8E4F0" stroke-width="0.8"/>
+        <line x1="228" y1="280" x2="280" y2="280" stroke="#C8E4F0" stroke-width="0.8"/>
+        <line x1="228" y1="288" x2="282" y2="288" stroke="#C8E4F0" stroke-width="0.8"/>
+        <line x1="228" y1="296" x2="276" y2="296" stroke="#C8E4F0" stroke-width="0.8"/>
+
       </svg>
     </div>
   </div>
