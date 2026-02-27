@@ -396,15 +396,22 @@
       .nav-links.mobile-open li { border-bottom: 1px solid rgba(58,172,224,0.08); }
       .nav-links.mobile-open a { display: block; padding: 14px 0; font-size: 0.75rem; }
 
+      /* ── OVERFLOW FIX (white column) ── */
+      html, body { overflow-x: hidden; max-width: 100vw; }
+      .hero-orb, .hero-orb-2 { display: none; }
+      .hero { overflow: hidden; }
+      .invest-split { max-width: 100%; }
+      .invest-left, .invest-right { min-width: 0; }
+      .re-card { min-width: 0; }
+      .box-img-card { overflow: hidden; }
+
       /* ── HERO ── */
       .hero {
         grid-template-columns: 1fr;
         padding: 100px 24px 60px;
         min-height: auto;
       }
-      .hero-visual {
-        display: none;
-      }
+      .hero-visual { display: none; }
       .hero-title { font-size: 3rem; }
       .hero-desc { max-width: 100%; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
@@ -423,38 +430,26 @@
       section { padding: 60px 24px; }
 
       /* ── TECHNOLOGY ── */
-      .tech-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+      .tech-inner { grid-template-columns: 1fr; gap: 40px; }
       .depth-card { position: static; }
 
       /* ── INVESTMENT ── */
-      .invest-split {
-        grid-template-columns: 1fr;
-      }
+      .invest-split { grid-template-columns: 1fr; }
       .invest-left, .invest-right { padding: 28px 24px; }
 
       /* ── REASSURANCE ── */
-      .re-grid { grid-template-columns: 1fr; gap: 16px; }
+      .re-grid { grid-template-columns: 1fr !important; gap: 16px; }
+      .re-card { padding: 28px 24px; }
+      .re-body { font-size: 0.82rem; }
 
       /* ── IN THE BOX ── */
-      .box-inner {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-      .box-img-card {
-        order: -1;
-        padding: 24px 16px;
-      }
+      .box-inner { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; }
+      .box-img-card { order: -1; padding: 24px 16px; }
       .box-img-card svg { max-width: 100% !important; height: auto; }
-      .box-inner { margin-top: 36px; }
       .box-row { padding: 14px 0; }
 
-      /* ── PAIRING / HOW TO USE / STEPS ── */
-      .pair-grid,
-      .how-inner,
-      .step-grid { grid-template-columns: 1fr !important; }
+      /* ── HOW TO USE / STEPS / PAIRING ── */
+      .pair-grid, .how-inner, .step-grid { grid-template-columns: 1fr !important; }
 
       /* ── SPECS ── */
       .specs-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -648,7 +643,7 @@
       font-size: 1.15rem; font-weight: 400; color: var(--heading);
       margin-bottom: 10px;
     }
-    .re-body { font-size: 0.78rem; font-weight: 300; color: var(--stone); line-height: 1.8; }
+    .re-body { font-size: 0.78rem; font-weight: 300; color: var(--stone); line-height: 1.8; word-wrap: break-word; overflow-wrap: break-word; }
 
     /* ── IN THE BOX ── */
     .in-box { background: var(--snow); }
@@ -687,21 +682,6 @@
       background: radial-gradient(circle, var(--teal-pale) 0%, transparent 70%);
     }
 
-    @media (max-width: 680px) {
-      .box-inner {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-      .box-img-card { 
-        order: -1; 
-        padding: 24px 16px;
-        width: 100%;
-      }
-      .box-img-card svg { 
-        max-width: 100% !important;
-        height: auto;
-      }
-    }
 
     /* ── FAQ ── */
     .faq { background: var(--white); }
