@@ -534,6 +534,10 @@
     @keyframes fadeIn {
       from { opacity: 0; } to { opacity: 1; }
     }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
     @keyframes pulse {
       0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
       50% { transform: translate(-50%,-50%) scale(1.08); opacity: 1; }
@@ -648,21 +652,90 @@
   <div class="hero-visual">
     <div class="device-showcase">
       <div class="device-glow"></div>
-      <div class="device-placeholder">
-        <div class="device-head">
-          <div class="device-led"></div>
-        </div>
-        <div class="device-buttons">
-          <div class="device-btn"></div>
-          <div class="device-btn"></div>
-        </div>
-        <div class="device-dots">
-          <div class="device-dot"></div>
-          <div class="device-dot" style="opacity:0.6"></div>
-          <div class="device-dot" style="opacity:0.3"></div>
-        </div>
-      </div>
-      <div class="floating-badge badge-1"><span class="badge-dot"></span>LED Therapy</div>
+
+      <svg viewBox="0 0 200 460" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:190px;position:relative;z-index:2;filter:drop-shadow(0 32px 64px rgba(26,46,56,0.13)) drop-shadow(0 8px 20px rgba(58,172,224,0.10));animation:float 6s ease-in-out infinite">
+        <defs>
+          <linearGradient id="dBodyGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#C4DCF0"/>
+            <stop offset="20%" stop-color="#E8F4FB"/>
+            <stop offset="50%" stop-color="#FFFFFF"/>
+            <stop offset="80%" stop-color="#E4F1F9"/>
+            <stop offset="100%" stop-color="#BACED8"/>
+          </linearGradient>
+          <linearGradient id="dBaseGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#E0EEF8"/>
+            <stop offset="50%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#BCD4E8"/>
+          </linearGradient>
+          <radialGradient id="dCapGrad" cx="40%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#787E88"/>
+            <stop offset="50%" stop-color="#363C44"/>
+            <stop offset="100%" stop-color="#1A2028"/>
+          </radialGradient>
+          <linearGradient id="dBtnGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#DCF0F8"/>
+            <stop offset="100%" stop-color="#BCDCEE"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ── BASE ── -->
+        <path d="M44 392 Q26 400 24 420 Q24 438 100 442 Q176 438 176 420 Q174 400 156 392 Z"
+          fill="url(#dBaseGrad)" stroke="#BACED8" stroke-width="1"/>
+        <path d="M36 416 Q68 408 100 407 Q132 408 164 416"
+          stroke="rgba(255,255,255,0.65)" stroke-width="1.5" fill="none"/>
+        <ellipse cx="100" cy="438" rx="68" ry="4" fill="rgba(150,190,215,0.3)"/>
+
+        <!-- ── BODY — flat top at y=76, sides taper down then widen at grip ── -->
+        <!-- Top edge is FLAT from x=74 to x=126. No taper to a point. -->
+        <path d="
+          M74 82
+          Q74 76 80 76
+          L120 76
+          Q126 76 126 82
+          C128 90 130 110 131 135
+          C133 165 134 205 133 248
+          C132 295 129 345 126 392
+          C116 398 100 400 100 400
+          C100 400 84 398 74 392
+          C71 345 68 295 67 248
+          C66 205 67 165 69 135
+          C70 110 72 90 74 76 Z"
+          fill="url(#dBodyGrad)" stroke="#B4CCD8" stroke-width="1.2"/>
+
+        <!-- Body sheen -->
+        <path d="M94 388 C92 335 91 275 91 220 C91 170 93 128 97 96"
+          stroke="rgba(255,255,255,0.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- Left groove -->
+        <path d="M72 382 C70 330 68 272 67 218 C67 172 69 132 74 102"
+          stroke="rgba(155,195,220,0.35)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Right groove -->
+        <path d="M128 382 C130 330 132 272 133 218 C133 172 131 132 126 102"
+          stroke="rgba(155,195,220,0.35)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- LED dots -->
+        <circle cx="100" cy="222" r="2.2" fill="#3AACE0" opacity="0.9"/>
+        <circle cx="100" cy="234" r="2.2" fill="#3AACE0" opacity="0.6"/>
+        <circle cx="100" cy="246" r="2.2" fill="#3AACE0" opacity="0.3"/>
+
+        <!-- Two oval buttons -->
+        <rect x="82" y="268" width="36" height="13" rx="6.5" fill="url(#dBtnGrad)" stroke="#9EC0D4" stroke-width="0.8"/>
+        <rect x="82" y="287" width="36" height="13" rx="6.5" fill="url(#dBtnGrad)" stroke="#9EC0D4" stroke-width="0.8"/>
+
+        <!-- ── HEAD CAP — sits exactly on the flat top (y=76), same width (74–126) ── -->
+        <!-- White rim ring: x=74 to 126, top at y=58, bottom at y=94 — lower half merges into body -->
+        <rect x="74" y="58" width="52" height="36" rx="16" fill="white" stroke="#C0D4E2" stroke-width="1"/>
+        <!-- Dark squircle surface inside ring -->
+        <rect x="81" y="63" width="38" height="26" rx="10" fill="url(#dCapGrad)"/>
+        <!-- Vent slots left and right of ring -->
+        <path d="M76 67 Q73 75 76 83" stroke="#B0C8D4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M124 67 Q127 75 124 83" stroke="#B0C8D4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Surface glint -->
+        <ellipse cx="92" cy="70" rx="5" ry="3" fill="rgba(255,255,255,0.22)" transform="rotate(-12 92 70)"/>
+        <!-- Ring highlight -->
+        <path d="M82 61 Q100 55 118 61" stroke="rgba(255,255,255,0.75)" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+
+            <div class="floating-badge badge-1"><span class="badge-dot"></span>LED Therapy</div>
       <div class="floating-badge badge-2"><span class="badge-dot"></span>EMS Microcurrent</div>
     </div>
   </div>
