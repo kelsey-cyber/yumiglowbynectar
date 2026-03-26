@@ -201,7 +201,16 @@
     }
     .badge-1 { top: 60px; left: -60px; animation: floatBadge 4s ease-in-out infinite; }
     .badge-2 { bottom: 100px; right: -70px; animation: floatBadge 4s ease-in-out infinite 1.5s; }
+    .badge-3 { top: 220px; right: -90px; animation: floatBadge 4s ease-in-out infinite 0.5s; }
+    .badge-4 { top: 400px; left: -90px; animation: floatBadge 4s ease-in-out infinite 2s; }
+    .badge-5 { top: 580px; right: -90px; animation: floatBadge 4s ease-in-out infinite 1s; }
+    .badge-6 { top: 760px; left: -90px; animation: floatBadge 4s ease-in-out infinite 2.5s; }
     .badge-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); margin-right: 8px; }
+    .badge-dot-blue { background: #6B9EBF; }
+    .badge-dot-red { background: #C47A6E; }
+    .badge-dot-purple { background: #8B7BB5; }
+    .badge-dot-gold { background: var(--gold); }
+    .tech-device-wrap { position:relative; width:640px; height:1040px; margin:0 auto; }
 
     /* ── FEATURES STRIP ── */
     .features-strip {
@@ -592,7 +601,10 @@
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
     @media (max-width: 768px) {
-      .steps-side-photo { display: none; }
+      /* Steps side photo — show on mobile, full width */
+      .steps-side-photo { display: block; }
+      .steps-side-photo img { max-width: 100% !important; }
+
       /* Nav */
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
@@ -608,13 +620,16 @@
       .nav-links.mobile-open li { border-bottom: 1px solid rgba(58,172,224,0.08); }
       .nav-links.mobile-open a { display: block; padding: 14px 0; font-size: 0.8rem; }
 
-      /* Show device on mobile, smaller */
-      .hero-visual { display: flex; margin-top: 40px; }
-      .device-showcase { width: 220px; height: 360px; }
-      .device-placeholder { width: 120px; height: 300px; }
-      .device-head { width: 100px; height: 100px; }
-      .device-led { width: 70px; height: 70px; }
-      .device-glow { width: 280px; height: 280px; }
+      /* Hero lifestyle image */
+      .hero-visual { display: flex; justify-content: center; margin-top: 40px; }
+      .hero-visual img { max-height: 340px; object-fit: cover; border-radius: 4px; }
+
+      /* Tech device section — scale down, hide side badges */
+      .tech-device-wrap { width: 260px !important; height: 420px !important; }
+      .tech-photo { padding: 0 24px 40px !important; }
+      .badge-3, .badge-4, .badge-5, .badge-6 { display: none; }
+      .badge-1 { left: -40px; font-size: 0.62rem; padding: 6px 10px; }
+      .badge-2 { right: -40px; font-size: 0.62rem; padding: 6px 10px; }
 
       /* Layout */
       .hero, .tech-grid, .steps-wrapper { grid-template-columns: 1fr; }
@@ -633,6 +648,11 @@
       .specs-grid { grid-template-columns: 1fr 1fr; }
       nav, section, .hero, footer { padding-left: 28px; padding-right: 28px; }
       .features-strip { gap: 24px; padding: 20px 28px; flex-wrap: wrap; }
+      /* Tech device — scale to fit tablet */
+      .tech-device-wrap { width: 400px !important; height: 650px !important; }
+      .tech-photo { padding: 0 120px 40px !important; }
+      .badge-3, .badge-5 { right: -70px; }
+      .badge-4, .badge-6 { left: -70px; }
     }
   </style>
 </head>
@@ -740,26 +760,16 @@
       <p style="font-size:0.62rem;color:var(--taupe);margin-top:14px;font-style:italic;">Illustration shows approximate cosmetic reach of light and microcurrent at different skin depths.</p>
     </div>
   </div>
-  <div class="tech-photo reveal" style="text-align:center;margin-top:80px;padding-bottom:40px;">
-    <div class="device-showcase" style="position:relative;width:640px;height:1040px;margin:0 auto;">
+  <div class="tech-photo reveal" style="text-align:center;margin-top:80px;padding:0 160px 40px;">
+    <div class="tech-device-wrap device-showcase">
       <div class="device-glow"></div>
       <img src="images/yumiglow.png" alt="YumiGlow EMS + LED Facial Device" style="width:100%;max-width:1000px;position:relative;z-index:2;animation:float 6s ease-in-out infinite;"/>
       <div class="floating-badge badge-1"><span class="badge-dot"></span>LED Therapy</div>
       <div class="floating-badge badge-2"><span class="badge-dot"></span>EMS Microcurrent</div>
-    </div>
-    <div style="display:inline-flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;margin-top:40px;max-width:700px;">
-      <div style="display:flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);">
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#6B9EBF;flex-shrink:0;"></span>Blue Light — Calm &amp; Refine
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);">
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#C47A6E;flex-shrink:0;"></span>Red + Near-Infrared — Glow &amp; Absorb
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);">
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#8B7BB5;flex-shrink:0;"></span>Purple + EMS — Lift &amp; Contour
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);">
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;"></span>Heat &amp; Cool — Intelligent Temperature Control
-      </div>
+      <div class="floating-badge badge-3"><span class="badge-dot badge-dot-blue"></span>Blue Light — Calm &amp; Refine</div>
+      <div class="floating-badge badge-4"><span class="badge-dot badge-dot-red"></span>Red + Near-Infrared — Glow &amp; Absorb</div>
+      <div class="floating-badge badge-5"><span class="badge-dot badge-dot-purple"></span>Purple + EMS — Lift &amp; Contour</div>
+      <div class="floating-badge badge-6"><span class="badge-dot badge-dot-gold"></span>Heat &amp; Cool — Temperature Control</div>
     </div>
   </div>
 </section>
