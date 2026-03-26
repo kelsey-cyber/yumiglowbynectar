@@ -199,12 +199,12 @@
       border: 1px solid var(--sand); padding: 8px 16px;
       box-shadow: 0 8px 24px rgba(44,33,24,0.1);
     }
-    .badge-1 { top: 60px; left: -60px; animation: floatBadge 4s ease-in-out infinite; }
-    .badge-2 { bottom: 100px; right: -70px; animation: floatBadge 4s ease-in-out infinite 1.5s; }
-    .badge-3 { top: 220px; right: -90px; animation: floatBadge 4s ease-in-out infinite 0.5s; }
-    .badge-4 { top: 400px; left: -90px; animation: floatBadge 4s ease-in-out infinite 2s; }
-    .badge-5 { top: 580px; right: -90px; animation: floatBadge 4s ease-in-out infinite 1s; }
-    .badge-6 { top: 760px; left: -90px; animation: floatBadge 4s ease-in-out infinite 2.5s; }
+    .badge-1 { top: 60px; left: 0px; animation: floatBadge 4s ease-in-out infinite; }
+    .badge-2 { bottom: 100px; right: 0px; animation: floatBadge 4s ease-in-out infinite 1.5s; }
+    .badge-3 { top: 220px; right: 0px; animation: floatBadge 4s ease-in-out infinite 0.5s; }
+    .badge-4 { top: 400px; left: 0px; animation: floatBadge 4s ease-in-out infinite 2s; }
+    .badge-5 { top: 580px; right: 0px; animation: floatBadge 4s ease-in-out infinite 1s; }
+    .badge-6 { top: 760px; left: 0px; animation: floatBadge 4s ease-in-out infinite 2.5s; }
     .badge-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); margin-right: 8px; }
     .badge-dot-blue { background: #6B9EBF; }
     .badge-dot-red { background: #C47A6E; }
@@ -628,8 +628,8 @@
       .tech-device-wrap { width: 260px !important; height: 420px !important; }
       .tech-photo { padding: 0 24px 40px !important; }
       .badge-3, .badge-4, .badge-5, .badge-6 { display: none; }
-      .badge-1 { left: -40px; font-size: 0.62rem; padding: 6px 10px; }
-      .badge-2 { right: -40px; font-size: 0.62rem; padding: 6px 10px; }
+      .badge-1 { left: 0px; font-size: 0.62rem; padding: 6px 10px; }
+      .badge-2 { right: 0px; font-size: 0.62rem; padding: 6px 10px; }
 
       /* Layout */
       .hero, .tech-grid, .steps-wrapper { grid-template-columns: 1fr; }
@@ -650,9 +650,7 @@
       .features-strip { gap: 24px; padding: 20px 28px; flex-wrap: wrap; }
       /* Tech device — scale to fit tablet */
       .tech-device-wrap { width: 400px !important; height: 650px !important; }
-      .tech-photo { padding: 0 120px 40px !important; }
-      .badge-3, .badge-5 { right: -70px; }
-      .badge-4, .badge-6 { left: -70px; }
+      .tech-photo { padding: 0 20px 40px !important; }
     }
   </style>
 </head>
@@ -760,7 +758,7 @@
       <p style="font-size:0.62rem;color:var(--taupe);margin-top:14px;font-style:italic;">Illustration shows approximate cosmetic reach of light and microcurrent at different skin depths.</p>
     </div>
   </div>
-  <div class="tech-photo reveal" style="text-align:center;margin-top:80px;padding:0 160px 40px;">
+  <div class="tech-photo reveal" style="text-align:center;margin-top:80px;padding:0 40px 40px;">
     <div class="tech-device-wrap device-showcase">
       <div class="device-glow"></div>
       <img src="images/yumiglow.png" alt="YumiGlow EMS + LED Facial Device" style="width:100%;max-width:1000px;position:relative;z-index:2;animation:float 6s ease-in-out infinite;"/>
