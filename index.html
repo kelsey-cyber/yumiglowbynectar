@@ -200,12 +200,12 @@
       box-shadow: 0 8px 24px rgba(44,33,24,0.1);
     }
     /* Circular arc: 3 badges per side, middle ones furthest out */
-    .badge-1 { top: 80px;  left: 80px;  animation: floatBadge 4s ease-in-out infinite; }
-    .badge-4 { top: 460px; left: 10px;  animation: floatBadge 4s ease-in-out infinite 2s; }
-    .badge-6 { top: 840px; left: 80px;  animation: floatBadge 4s ease-in-out infinite 2.5s; }
-    .badge-3 { top: 80px;  right: 80px; animation: floatBadge 4s ease-in-out infinite 0.5s; }
-    .badge-2 { top: 460px; right: 10px; animation: floatBadge 4s ease-in-out infinite 1.5s; }
-    .badge-5 { top: 840px; right: 80px; animation: floatBadge 4s ease-in-out infinite 1s; }
+    .badge-1 { top: 110px;  left: 120px;  animation: floatBadge 4s ease-in-out infinite; }
+    .badge-4 { top: 490px;  left: 60px;   animation: floatBadge 4s ease-in-out infinite 2s; }
+    .badge-6 { top: 870px;  left: 120px;  animation: floatBadge 4s ease-in-out infinite 2.5s; }
+    .badge-3 { top: 110px;  right: 120px; animation: floatBadge 4s ease-in-out infinite 0.5s; }
+    .badge-2 { top: 490px;  right: 60px;  animation: floatBadge 4s ease-in-out infinite 1.5s; }
+    .badge-5 { top: 870px;  right: 120px; animation: floatBadge 4s ease-in-out infinite 1s; }
     .badge-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); margin-right: 8px; }
     .badge-dot-blue { background: #6B9EBF; }
     .badge-dot-red { background: #C47A6E; }
@@ -213,7 +213,9 @@
     .badge-dot-gold { background: var(--gold); }
     /* Container wide enough for arc + centered image */
     .tech-device-wrap { position:relative; width:900px; height:1040px; margin:0 auto; }
-    .tech-device-wrap > img { display:block; width:520px; margin:0 auto; position:relative; z-index:2; animation:float 6s ease-in-out infinite; }
+    /* Centering wrapper — keeps float animation from fighting transform */
+    .device-img-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; }
+    .device-img-center img { display:block; width:520px; animation:float 6s ease-in-out infinite; }
 
     /* ── FEATURES STRIP ── */
     .features-strip {
@@ -629,7 +631,7 @@
 
       /* Tech device section — scale down, hide arc badges, keep 2 */
       .tech-device-wrap { width: 100% !important; max-width: 340px !important; height: 520px !important; }
-      .tech-device-wrap > img { width: 260px !important; margin:0 auto !important; }
+      .device-img-center img { width: 240px !important; }
       .tech-photo { padding: 0 0 40px !important; overflow: visible !important; }
       .badge-3, .badge-4, .badge-5, .badge-6 { display: none; }
       .badge-1 { top: 60px;  left: 0 !important; font-size: 0.60rem; padding: 5px 9px; }
@@ -661,7 +663,13 @@
       .features-strip { gap: 24px; padding: 20px 28px; flex-wrap: wrap; }
       /* Tech device — scale to fit tablet */
       .tech-device-wrap { width: 700px !important; height: 860px !important; }
-      .tech-device-wrap > img { width: 400px !important; margin:0 auto !important; }
+      .device-img-center img { width: 380px !important; }
+      .badge-1 { top: 80px;  left: 80px; }
+      .badge-4 { top: 370px; left: 30px; }
+      .badge-6 { top: 660px; left: 80px; }
+      .badge-3 { top: 80px;  right: 80px; }
+      .badge-2 { top: 370px; right: 30px; }
+      .badge-5 { top: 660px; right: 80px; }
       .badge-1 { top: 60px;  left: 60px; }
       .badge-4 { top: 370px; left: 10px; }
       .badge-6 { top: 680px; left: 60px; }
@@ -779,7 +787,7 @@
   <div class="tech-photo reveal" style="text-align:center;margin-top:80px;padding-bottom:40px;overflow:visible;">
     <div class="tech-device-wrap device-showcase">
       <div class="device-glow"></div>
-      <img src="images/yumiglow.png" alt="YumiGlow EMS + LED Facial Device"/>
+      <div class="device-img-center"><img src="images/yumiglow.png" alt="YumiGlow EMS + LED Facial Device"/></div>
       <div class="floating-badge badge-1"><span class="badge-dot"></span>LED Therapy</div>
       <div class="floating-badge badge-2"><span class="badge-dot"></span>EMS Microcurrent</div>
       <div class="floating-badge badge-3"><span class="badge-dot badge-dot-blue"></span>Blue Light — Calm &amp; Refine</div>
